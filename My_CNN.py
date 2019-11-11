@@ -219,7 +219,6 @@ class My_CNN(object):
         conv1 = Convolution2D(filters=6, kernel_size=(5, 5), input_shape=(size, size, self.channel))
         model.add(conv1)
         # model.add(BatchNormalization())
-        # 加入BN层之后，会大幅加速网络的收敛速度，但这只是针对于训练集的，验证集赶不上训练集，造成严重的过拟合
         model.add(Activation('relu'))
         pool1 = MaxPool2D(pool_size=(2, 2))
         model.add(pool1)
@@ -286,8 +285,8 @@ class My_CNN(object):
 
         # -----局部二值卷积层-----
         # 本层由一个LBP mask层和一个卷积层组成
-        lbc = LB(filters=120, kernel_size=5, sparsity=0.9) # 使用github的LBCNN代码，可能由于隐函数的优化，这个LBC的收敛速度要快于后者
-        # lbc = LBC(filters=120, kernel_size=(5, 5), sparsity=0.9) # 使用自写的LBCNN代码，稀疏度取为0.9
+        # lbc = LB(filters=120, kernel_size=5, sparsity=0.9)
+        # lbc = LBC(filters=120, kernel_size=(5, 5), sparsity=0.9) # 稀疏度取为0.9
         model.add(lbc)
         model.add(Activation('relu')) # 用relu加上非线性成分
         conv3 = Convolution2D(filters=120, kernel_size=1) # 不改变特征图大小，卷积层的过滤器大小为1
