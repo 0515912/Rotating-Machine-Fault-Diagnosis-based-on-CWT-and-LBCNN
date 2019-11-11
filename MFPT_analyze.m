@@ -1,6 +1,6 @@
 %MFPT ANALYZE
 clear all; clc;
-load('H:\±ÏÒµÉè¼Æ\MFPT\MFPT_data.mat');
+load('MFPT_data.mat');
 load('names_bin.mat');
 baseline = data(1:146484*2);%1757808
 innerrace = data(146484+1757809:146484*2+1757808);%1025388
@@ -14,19 +14,19 @@ f = [97656,48828];
 imgsize = 40;
 totalscal = 2048;
 time = 0.1;
-img_path = 'H:\±ÏÒµÉè¼Æ\MFPT\Ê±ÆµÍ¼\imgs_selection\';
+img_path = 'imgs_selection\';
 limit = 200;
 for i = 74
     wavename =names_bin{i};
     for n = 1:5
-        %Õı³£×´Ì¬
+        %æ­£å¸¸çŠ¶æ€
         window = 9765;
         step = 100;
         frequency = f(1);
         data = baseline([1:window]+n*step);
         img = CWT(data, frequency, time, wavename, totalscal, imgsize, limit);
         imwrite(img,[img_path,wavename,'_','baseline',int2str(n),'.jpg']);
-        %ÄÚÈ¦ºÍÍâÈ¦
+        %å†…åœˆå’Œå¤–åœˆ
         window = 4880;
         step = 100;
         frequency = f(2);
@@ -41,8 +41,8 @@ for i = 74
 end
 
 %%
-%¼ÆËãIQA²ÎÊı
-% part1 ĞÅÏ¢ìØ
+%è®¡ç®—IQAå‚æ•°
+% part1 ä¿¡æ¯ç†µ
 ENT = zeros(imgsize(names_bin,1),1);
 for i = 1:imgsize(names_bin,1)
     wavename =names_bin{i};
@@ -64,15 +64,15 @@ end
 
 
 %%
-%¼ÆËãIQA²ÎÊı
-% part2 BrennerÌİ¶Èº¯Êı
+%è®¡ç®—IQAå‚æ•°
+% part2 Brenneræ¢¯åº¦å‡½æ•°
 Bre = zeros(imgsize(names_bin,1),1);
 for i = 1:imgsize(names_bin,1)
     wavename =names_bin{i};
     bre = 0;
     for m = 0:16
         for n = 1:5
-            dir = 'G:\±ÏÒµÉè¼Æ\AMU\Ê±ÆµÍ¼\imgs_selection\';
+            dir = 'imgs_selection\';
             name = [wavename,'_',num2str(m+1),'.',int2str(n),'.jpg'];
             img = imread([dir,name]);
             bre = bre + Brenner(img);
@@ -82,10 +82,10 @@ for i = 1:imgsize(names_bin,1)
     disp(wavename);
 end
 
-%¹éÒ»»¯
+%å½’ä¸€åŒ–
 A = (ENT-min(min(ENT)))/(max(max(ENT))-min(min(ENT)));
 B = (Bre-min(min(Bre)))/(max(max(Bre))-min(min(Bre)));
 C = (A+B)/2;
 plot(C);
-xlabel('Ğ¡²¨ÀàĞÍ');
-ylabel('ÖÊÁ¿Ö¸±ê');
+xlabel('å°æ³¢ç±»å‹');
+ylabel('è´¨é‡æŒ‡æ ‡');
