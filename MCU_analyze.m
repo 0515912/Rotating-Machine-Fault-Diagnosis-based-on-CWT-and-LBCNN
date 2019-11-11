@@ -1,14 +1,14 @@
 %AMU ANALYZE
 clear all; clc;
-load('F:\±ÏÒµÉè¼Æ\MCU\MCU_data.mat');
-load('names_bin.mat'); %ÔØÈëĞ¡²¨Ãû³Æ
+%load('MCU_data.mat');
+load('names_bin.mat'); %è½½å…¥å°æ³¢åç§°
 %%
-%»æÖÆĞ¡²¨Ê±ÆµÍ¼
+%ç»˜åˆ¶å°æ³¢æ—¶é¢‘å›¾
 dia = 64;
 totalscal = 1024;
 frequency = 10240;
 time = 0.4;
-depress_pic_path = 'G:\±ÏÒµÉè¼Æ\MCU\Ê±ÆµÍ¼\imgs_selection\';
+%depress_pic_path = 'imgs_selection\';
 
 for i = 1:size(names_bin,1)
     for m = 0:16
@@ -24,15 +24,15 @@ for i = 1:size(names_bin,1)
 end
 
 %%
-%¼ÆËãIQA²ÎÊı
-% part1 ĞÅÏ¢ìØ
+%è®¡ç®—IQAå‚æ•°
+% part1 ä¿¡æ¯ç†µ
 ENT = zeros(size(names_bin,1),1);
 for i = 1:size(names_bin,1)
     wavename =names_bin{i};
     ent = 0;
     for m = 0:16
         for n = 1:5
-            dir = 'G:\±ÏÒµÉè¼Æ\AMU\Ê±ÆµÍ¼\imgs_selection\';
+            dir = 'imgs_selection\';
             name = [wavename,'_',num2str(m+1),'.',int2str(n),'.jpg'];
             img = imread([dir,name]);
             ent = ent + entropy(img);
@@ -44,15 +44,15 @@ end
 
 
 %%
-%¼ÆËãIQA²ÎÊı
-% part2 BrennerÌİ¶Èº¯Êı
+%è®¡ç®—IQAå‚æ•°
+% part2 Brenneræ¢¯åº¦å‡½æ•°
 Bre = zeros(size(names_bin,1),1);
 for i = 1:size(names_bin,1)
     wavename =names_bin{i};
     bre = 0;
     for m = 0:16
         for n = 1:5
-            dir = 'G:\±ÏÒµÉè¼Æ\AMU\Ê±ÆµÍ¼\imgs_selection\';
+            dir = 'imgs_selection\';
             name = [wavename,'_',num2str(m+1),'.',int2str(n),'.jpg'];
             img = imread([dir,name]);
             bre = bre + Brenner(img);
@@ -62,10 +62,10 @@ for i = 1:size(names_bin,1)
     disp(wavename);
 end
 
-%¹éÒ»»¯
+%å½’ä¸€åŒ–
 A = (ENT-min(min(ENT)))/(max(max(ENT))-min(min(ENT)));
 B = (Bre-min(min(Bre)))/(max(max(Bre))-min(min(Bre)));
 C = (A+B)/2;
 plot(C);
-xlabel('Ğ¡²¨ÀàĞÍ');
-ylabel('ÖÊÁ¿Ö¸±ê');
+xlabel('å°æ³¢ç±»å‹');
+ylabel('è´¨é‡æŒ‡æ ‡');
