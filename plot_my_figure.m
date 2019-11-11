@@ -1,9 +1,9 @@
-%% 画图
+%% 鐢诲浘
 %% optimizer
-data1 = csvread('F:/毕业设计/MFPT/时频图/数据记录/Adam.csv');
-data2 = csvread('F:/毕业设计/MFPT/时频图/数据记录/SGD.csv');
-data3 = csvread('F:/毕业设计/MFPT/时频图/数据记录/Adadelta.csv');
-data4 = csvread('F:/毕业设计/MFPT/时频图/数据记录/Adagrad.csv');
+data1 = csvread('Adam.csv');
+data2 = csvread('SGD.csv');
+data3 = csvread('Adadelta.csv');
+data4 = csvread('Adagrad.csv');
 plot(data1(1,:)*100,'Linewidth', 2)
 hold on;
 plot(data2(1,:)*100,'Linewidth', 2)
@@ -16,8 +16,8 @@ xlabel('Epoch')
 ylabel('Accuracy(%)')
 
 %% lenet
-data1 = csvread('F:/毕业设计/MFPT/时频图/数据记录/RLBCNN.csv');
-data2 = csvread('F:/毕业设计/MFPT/时频图/数据记录/RLenet.csv');
+data1 = csvread('RLBCNN.csv');
+data2 = csvread('RLenet.csv');
 plot(data1(1,:)*100,'Linewidth', 2)
 hold on;
 plot(data2(1,:)*100,'Linewidth', 2)
@@ -27,7 +27,7 @@ ylabel('Accuracy(%)')
 
 
 %% early stopping
-data = csvread('F:/毕业设计/MFPT/时频图/数据记录/LBCNN.csv');
+data = csvread('LBCNN.csv');
 figure;
 plot(data(1,:)*100,'Linewidth',2)
 hold on;
@@ -50,16 +50,16 @@ ylabel('Loss')
 
 
 %% 
-data = csvread('F:/毕业设计/MFPT/时频图/数据记录/Lenet.csv');
+data = csvread('Lenet.csv');
 min(data(4,:))
 
 %% AMU
-%% 画图
+%% 鐢诲浘
 %% optimizer
-data1 = csvread('F:/毕业设计/AMU/时频图/数据记录/Adam.csv');
-data2 = csvread('F:/毕业设计/AMU/时频图/数据记录/SGD.csv');
-data3 = csvread('F:/毕业设计/AMU/时频图/数据记录/Adadelta.csv');
-data4 = csvread('F:/毕业设计/AMU/时频图/数据记录/Adagrad.csv');
+data1 = csvread('Adam.csv');
+data2 = csvread('SGD.csv');
+data3 = csvread('Adadelta.csv');
+data4 = csvread('Adagrad.csv');
 plot(data1(1,:)*100,'Linewidth', 2)
 hold on;
 plot(data2(1,:)*100,'Linewidth', 2)
@@ -72,8 +72,8 @@ xlabel('Epoch')
 ylabel('Accuracy(%)')
 
 %% lenet
-data1 = csvread('F:/毕业设计/AMU/时频图/数据记录/RLBCNN.csv');
-data2 = csvread('F:/毕业设计/AMU/时频图/数据记录/RLenet.csv');
+data1 = csvread('RLBCNN.csv');
+data2 = csvread('RLenet.csv');
 plot(data1(1,:)*100,'Linewidth', 2)
 hold on;
 plot(data2(1,:)*100,'Linewidth', 2)
@@ -83,7 +83,7 @@ ylabel('Accuracy(%)')
 
 
 %% early stopping
-data = csvread('F:/毕业设计/AMU/时频图/数据记录/LBCNN.csv');
+data = csvread('LBCNN.csv');
 figure;
 plot(data(1,:)*100,'Linewidth',2)
 hold on;
@@ -106,6 +106,6 @@ ylabel('Loss')
 
 
 %% 
-data = csvread('F:/毕业设计/AMU/时频图/数据记录/Lenet.csv');
+data = csvread('Lenet.csv');
 min(data(4,:))
 
