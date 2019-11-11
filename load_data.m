@@ -1,12 +1,12 @@
 function data= load_data()
-%ÓÃÓÚÔØÈëMFPTÊı¾İ¼¯
-%Êä³ö£ºdata: Êı¾İ¼¯
-root = dir('E:\IMP Lab\±ÏÒµÉè¼Æ\Ò»ÖÖĞÂĞÍÉñ¾­ÍøÂç\MFPTÊı¾İ¼¯\data\*.mat');% »ñÈ¡Ä¿Â¼
-file_name = {root.name}';%  »ñÈ¡ÎÄ¼şÃû
+%ç”¨äºè½½å…¥MFPTæ•°æ®é›†
+%è¾“å‡ºï¼šdata: æ•°æ®é›†
+root = dir('*.mat');% è·å–ç›®å½•
+file_name = {root.name}';%  è·å–æ–‡ä»¶å
 data = [];
 for i=1:size(file_name,1)
-    disp(['¿ªÊ¼ÔØÈëÊı¾İ°ü',num2str(i)]);
-    load(strcat('E:\IMP Lab\±ÏÒµÉè¼Æ\Ò»ÖÖĞÂĞÍÉñ¾­ÍøÂç\MFPTÊı¾İ¼¯\data\' , file_name{i}));
+    disp(['å¼€å§‹è½½å…¥æ•°æ®åŒ…',num2str(i)]);
+    load(strcat('data\' , file_name{i}));
     data = [data;bearing.gs];
 end
 data = outlier_filter(data);
