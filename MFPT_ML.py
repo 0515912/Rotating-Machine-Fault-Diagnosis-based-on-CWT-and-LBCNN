@@ -126,7 +126,7 @@ class ML_Trainer():
 
 if __name__ == '__main__':
     # MFPT数据集
-    dir =  'F:\毕业设计\MFPT\时频图\数据记录\\'
+    #dir =  ''
     model = ML_Trainer(40, 3, 16, 1000, dir)
     # SVM
     model.SVM_trainer()
