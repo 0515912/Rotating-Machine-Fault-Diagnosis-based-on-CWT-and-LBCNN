@@ -1,6 +1,6 @@
 clc; clear all;
-load('F:\毕业设计\MCU\MCU_data.mat');
-img_path = 'F:\毕业设计\MCU\振动图\imgs\';
+load('MCU_data.mat');
+img_path = 'imgs\';
 size = 64;
 window = 4096;
 step = 256;
