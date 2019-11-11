@@ -7,10 +7,10 @@ import matplotlib.pyplot as plt
 import csv
 import h5py
 
-# 共处理两个数据集，MFPT与澳门大学
+
 global MFPT_dir, MCU_dir
-MFPT_dir =  'F:\毕业设计\MFPT\时频图\数据记录\\' # MFPT数据集保存路径
-MCU_dir = 'F:\毕业设计\MCU\时频图\数据记录\\' # 澳门大学数据集保存路径
+MFPT_dir =  '数据记录\\'
+MCU_dir = '数据记录\\'
 
 
 def load_img():
@@ -20,23 +20,23 @@ def load_img():
     '''
     # MFPT
     dir = MFPT_dir
-    model = My_CNN(40, 16, 1000, dir)  # 初始化模型 图片尺寸40 共16类 每类1000张图片
-    img_dir = 'F:\毕业设计\MFPT\时频图\imgs\\'   # 图片保存路径
-    model.read_img(img_dir)   # 初次使用需要载入图片
+    model = My_CNN(40, 16, 1000, dir)  # 初始化模型
+    img_dir = 'imgs\\'   # 图片保存路径
+    model.read_img(img_dir)
 
     # MCU
     dir = MCU_dir
-    model = My_CNN(40, 17, 1000, dir)  # 初始化模型 图片尺寸40 共17类 每类1000张图片
+    model = My_CNN(40, 17, 1000, dir)  # 初始化模型
     img_dir = 'F:\毕业设计\MCU\时频图\imgs\\'  # 图片保存路径
-    model.read_img(img_dir)  # 初次使用需要载入图片
+    model.read_img(img_dir)
 
 def OP_MFPT():
     '''
-    对MFPT数据集，比较不同优化器下的LBCNN网络的效果
+    对数据集，比较不同优化器下的LBCNN网络的效果
     :return: 模型会自动保存为H5格式，训练历史数据会自动保存为二进制格式
     '''
     dir = MFPT_dir
-    model = My_CNN(40, 16, 1000, dir)  # 初始化模型 图片尺寸40 共16类 每类1000张图片
+    model = My_CNN(40, 16, 1000, dir)  # 初始化模型
 
     # Adam
     model.LBCNN('Adam')
@@ -65,11 +65,11 @@ def OP_MFPT():
 
 def OP_MCU():
     '''
-        对澳门大学数据集，比较不同优化器下的LBCNN网络的效果
+        对数据集，比较不同优化器下的LBCNN网络的效果
         :return: 模型会自动保存为H5格式，训练历史数据会自动保存为二进制格式
     '''
     dir = MCU_dir
-    model = My_CNN(40, 17, 1000, dir)  # 初始化模型 图片尺寸40 共17类 每类1000张图片
+    model = My_CNN(40, 17, 1000, dir)  # 初始化模型
 
     # Adam
     model.LBCNN('Adam')
@@ -98,11 +98,11 @@ def OP_MCU():
 
 def LBCNN_MFPT():
     '''
-    使用LBCNN完整地训练MFPT数据集，保存最优结果
+    使用LBCNN完整地训练数据集，保存最优结果
     :return:
     '''
     dir = MFPT_dir
-    model = My_CNN(40, 16, 1000, dir)  # 初始化模型 图片尺寸40 共16类 每类1000张图片
+    model = My_CNN(40, 16, 1000, dir)  # 初始化模型
     model.LBCNN('Adam')
     hist_path = dir + 'LBCNN_'
     path = dir + 'LBCNN_model.h5'
@@ -110,11 +110,11 @@ def LBCNN_MFPT():
 
 def LBCNN_MCU():
     '''
-        使用LBCNN完整地训练澳门大学数据集，保存最优结果
+        使用LBCNN完整地训练数据集，保存最优结果
         :return:
     '''
     dir = MCU_dir
-    model = My_CNN(40, 17, 1000, dir)  # 初始化模型 图片尺寸40 共17类 每类1000张图片
+    model = My_CNN(40, 17, 1000, dir)  # 初始化模型
     model.LBCNN('Adam', lr=1e-4)
     hist_path = dir + 'LBCNN_'
     path = dir + 'LBCNN_model.h5'
@@ -123,11 +123,11 @@ def LBCNN_MCU():
 
 def Lenet_MFPT():
     '''
-        使用Lenet完整地训练MFPT数据集，保存最优结果
+        使用Lenet完整地训练数据集，保存最优结果
         :return:
     '''
     dir = MFPT_dir
-    model = My_CNN(40, 16, 1000, dir)  # 初始化模型 图片尺寸40 共16类 每类1000张图片
+    model = My_CNN(40, 16, 1000, dir)  # 初始化模型
     model.LeNet_5('Adam', lr=1e-3)
     hist_path = dir + 'LeNet_'
     path = dir + 'LeNet_model.h5'
@@ -135,11 +135,11 @@ def Lenet_MFPT():
 
 def Lenet_MCU():
     '''
-            使用Lenet完整地训练澳门大学数据集，保存最优结果
+            使用Lenet完整地训练数据集，保存最优结果
             :return:
     '''
-    dir = MCU_dir  # 数据集保存路径，之后就可以不用重新载入图片
-    model = My_CNN(40, 17, 1000, dir)  # 初始化模型 图片尺寸40 共17类 每类1000张图片
+    dir = MCU_dir  # 数据集保存路径
+    model = My_CNN(40, 17, 1000, dir)  # 初始化模型
     model.LeNet_5('Adam', lr=1e-4)
     hist_path = dir + 'LeNet_'
     path = dir + 'LeNet_model.h5'
@@ -150,11 +150,11 @@ def Lenet_MCU():
 
 def plot():
     '''
-    画图，这里画的是澳门大学的不同优化器
+    画图
     :return:
     '''
-    dir = MCU_dir  # 数据集保存路径，之后就可以不用重新载入图片
-    model = My_CNN(40, 17, 1000, dir)  # 初始化模型 图片尺寸40 共16类 每类1000张图片
+    dir = MCU_dir  # 数据集保存路径
+    model = My_CNN(40, 17, 1000, dir)  # 初始化模型
     hist_path = dir + 'Adam_'
     history = model.load_data(hist_path, 'history')
     plt.figure()
@@ -191,8 +191,8 @@ def csv_trans(file, path):
 def write():
     # 将二进制文件写为csv格式，方便之后用MATLAB画图
     # MFPT
-    dir = MFPT_dir  # 数据集保存路径，之后就可以不用重新载入图片
-    model = My_CNN(40, 16, 1000, dir)  # 初始化模型 图片尺寸40 共16类 每类1000张图片
+    dir = MFPT_dir  # 数据集保存路径
+    model = My_CNN(40, 16, 1000, dir)  # 初始化模型
 
     # LBCNN+Adam
     hist_path = dir + 'Adam_'
@@ -242,8 +242,8 @@ def write():
     csv_trans(history, filename)
 
     # MCU
-    dir = MCU_dir  # 数据集保存路径，之后就可以不用重新载入图片
-    model = My_CNN(40, 17, 1000, dir)  # 初始化模型 图片尺寸40 共17类 每类1000张图片
+    dir = MCU_dir  # 数据集保存路径
+    model = My_CNN(40, 17, 1000, dir)  # 初始化模型
     # LBCNN+Adam
     hist_path = dir + 'Adam_'
     history = model.load_data(hist_path, 'history')
@@ -286,11 +286,11 @@ def write():
 
 def MFPT_race():
     '''
-    比较LBCNN和Lenet在MFPT数据集中的表现
+    比较LBCNN和Lenet在数据集中的表现
     :return:
     '''
-    dir = MFPT_dir  # 数据集保存路径，之后就可以不用重新载入图片
-    model = My_CNN(40, 16, 1000, dir)  # 初始化模型 图片尺寸40 共16类 每类1000张图片
+    dir = MFPT_dir  # 数据集保存路径
+    model = My_CNN(40, 16, 1000, dir)  # 初始化模型
     model.LeNet_5('Adam', lr=1e-3)
     hist_path = dir + 'RLeNet_'
     path = dir + 'RLeNet_model.h5'
@@ -302,11 +302,11 @@ def MFPT_race():
 
 def MCU_race():
     '''
-        比较LBCNN和Lenet在澳门大学数据集中的表现
+        比较LBCNN和Lenet在数据集中的表现
         :return:
     '''
-    dir = MCU_dir  # 数据集保存路径，之后就可以不用重新载入图片
-    model = My_CNN(40, 17, 1000, dir)  # 初始化模型 图片尺寸40 共17类 每类1000张图片
+    dir = MCU_dir  # 数据集保存路径
+    model = My_CNN(40, 17, 1000, dir)  # 初始化模型
     model.LeNet_5('Adam', lr=1e-4)
     hist_path = dir + 'RLeNet_'
     path = dir + 'RLeNet_model.h5'
@@ -318,7 +318,6 @@ def MCU_race():
 
 def replacement(path):
     '''
-    使用github LBCNN的模型加载会报错，使用这个函数修正之后可以加载
     :param path: 模型路径
     :return:
     '''
@@ -336,11 +335,11 @@ def replacement(path):
 
 def MFPT_output():
     '''
-    输出MFPT混淆矩阵
+    输出混淆矩阵
     :return:
     '''
     dir = MFPT_dir
-    model = My_CNN(40, 16, 1000, dir)  # 初始化模型 图片尺寸40 共16类 每类1000张图片
+    model = My_CNN(40, 16, 1000, dir)  # 初始化模型
     model.LBCNN('Adam')
     path = dir + 'LBCNN_model.h5'
     model.run_model(path)
@@ -348,11 +347,11 @@ def MFPT_output():
 
 def MCU_output():
     '''
-    输出澳门大学混淆矩阵
+    输出混淆矩阵
     :return:
     '''
     dir = MCU_dir
-    model = My_CNN(40, 17, 1000, dir)  # 初始化模型 图片尺寸40 共16类 每类1000张图片
+    model = My_CNN(40, 17, 1000, dir)  # 初始化模型
     model.LBCNN('Adam')
     path = dir + 'LBCNN_model.h5'
     model.run_model(path)
